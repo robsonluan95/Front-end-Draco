@@ -1,0 +1,101 @@
+.container{
+    max-width: 720px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.container h2{
+    color: var(--white);
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+.input{
+    background-color: var(--background);
+    border:1px solid var(--darkText) ;
+    border-radius: 0.2rem;
+    height: 40px;
+    color: var(--white);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    
+}
+.buttonAdd{
+    height: 40px;
+    background-color: var(--yellow);
+    border:none;
+    border-radius: .2rem;
+
+    font-weight: bolder;
+}
+.content{
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: #5555;
+    height: 40px;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: .3rem;
+    color: var(--white);
+    border-left: 5px var(--yellow) solid;
+    justify-content: space-between;
+    box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.53);
+    -webkit-box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.53);
+    -moz-box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.53);
+    
+}
+.content span{
+    letter-spacing: 0.1rem;
+    font-size: .9rem;
+}
+.left{
+    transition: all 1s;
+}
+.left:hover{
+    transform: scale(1.5);
+    animation: rotateAnimation 2s linear infinite;
+    cursor: pointer;
+}
+.attButton{
+    display: flex;
+    justify-content: space-between;
+}
+.rotate{
+    display: flex;
+    align-items: center;
+    transition: all 1s;
+    margin-right: .5rem;
+}
+.rotate:hover{
+    cursor: pointer;
+    animation:ButtonRotateAnimation 2s linear infinite;
+}
+@keyframes rotateAnimation{
+    0%, 100% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(30deg);
+      }
+      75% {
+        transform: rotate(-30deg);
+      }
+}
+
+@keyframes ButtonRotateAnimation{
+    0%, 100% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(50deg);
+      }
+      75% {
+        transform: rotate(-50deg);
+      }
+}

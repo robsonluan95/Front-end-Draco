@@ -1,0 +1,60 @@
+
+
+.divCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--darkText);
+    min-width: 180px;
+    width: 200px;
+    height: 250px;
+    border-radius: .3rem;
+    color: var(--white);
+    margin: 10px ;
+    .containerImage{
+        display: flex;
+        justify-content: center;
+        width: 90%;
+        border-bottom: .1rem solid var(--darkText);
+    }
+  
+}
+.divTexto{
+    margin-top: 1rem;
+    width: 90%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    h1{
+        font-size: 1rem;
+    }
+}
+.valorDesconto{
+    color: var(--darkText);
+    font-size: .8rem;
+     text-decoration: line-through;
+}
+.valorCompleto{
+    color: var(--white);
+    font-weight: 400;
+    span{
+        color: var(--yellow);
+        font-weight: 800;
+    }
+}
+.avista{
+    font-size: .7rem;
+    font-weight: bolder;
+    font-style: oblique;
+}
+.valorDividido{
+    font-size: .7rem;
+    font-weight: bolder;
+    font-style: oblique;
+   span{
+        color: var(--yellow);
+        font-weight: 800;
+    }
+}

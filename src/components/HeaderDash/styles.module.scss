@@ -1,0 +1,153 @@
+
+.containerHeaderDash{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 100px;
+    margin-top: 10px;
+    width: 100%;
+   
+}
+.draco{
+    margin: 0 10px;
+}
+.containerHeaders{
+    max-width: 720px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.dracoLogout{
+    display: none;
+   
+    
+}
+.containerLogo{
+    display: flex;
+    align-items: center;
+   
+    margin: 10px;
+
+    
+}
+.logoImg{
+    width: 75px;
+    height: 75px;
+}
+.logoName{
+    margin: 15px;
+    display: flex; 
+   
+}
+
+.fontDraco{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+    h1{
+        font-size: 2rem;
+        color: var(--white);
+    }
+    h2{
+        font-size: 1rem;
+        color: var(--yellow);
+    }
+}
+.containerNavigation{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+ 
+    .contentLogin{
+        display: flex;
+        flex-direction: column;
+        color: var(--white);
+        font-size: .7rem;
+        span{
+            color: var(--yellow);
+            font-weight: bold;
+        }
+    }
+    .contentTextLogin{
+        font-size: 1rem;
+        font-weight: bold;
+
+    }
+    .contentWhats{
+        color: var(--white);
+        font-size: .7rem;
+        span{
+            color: #25d366;
+            font-weight: bold;
+        }
+    }
+}
+
+@media (max-width:720px) {
+    .containerNavigation{
+        display: none;
+    }
+    .dracoLogout{
+        display: flex;
+       
+       
+    }
+    .contenteDracoLogout{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        span{
+            font-size: .5rem;
+        }
+    }
+    .containerHeaderDash{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin: 10px auto;
+    }   
+    .contentLogin{
+        display:flex;
+        font-size: .8rem;
+        p{
+            font-size: 0.4rem;
+        }
+        span{
+            color: var(--yellow);
+            font-weight: bolder;
+            font-size: 0.5rem;
+        }
+    }
+    .headerLogo{
+        margin: 0px;
+        
+    }
+    .logoName{
+        margin: 0px;
+    }
+    .logoImg{
+        display: none;
+    }
+    .draco{
+        display: flex;
+        
+    }
+    .dracoLogout{
+        font-size: .5rem;
+        align-items: center;
+        justify-content: center;
+        color: var(--yellow);
+        Link{
+           width: 100%;
+           background-color: aliceblue;
+            display: flex;
+        }
+    }
+    
+}

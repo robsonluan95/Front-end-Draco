@@ -1,0 +1,27 @@
+.swiperContainer {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px; /* Espaçamento inferior opcional */
+  }
+  
+  .swiperWrapper {
+    width: 100%;
+  }
+  
+  .swiper-slide {
+    background-color: #3d3d3d; /* Cor de fundo do slide */
+    border-radius: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contentText {
+    letter-spacing: 2px;
+    color: var(--white);
+    font-weight: bold;
+    font-style: italic;
+    font-size: 2rem;
+    margin: 10px;
+  }
+  

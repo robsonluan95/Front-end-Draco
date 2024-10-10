@@ -1,0 +1,250 @@
+.container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0  auto;
+    max-width: 1920px;
+    background-color: var(--background);
+    .text-animation {
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out; /* Transição suave de 0.5 segundos */
+    }
+      
+      .text-animation.hidden {
+        opacity: 0;
+    }
+    h6{
+        margin: 0 50px;
+        color: white;
+        font-weight: lighter;
+        letter-spacing: 0.2rem;
+    }
+   
+}
+.containerCoupon{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.51);
+}
+.textCatching{
+    font-size: .9rem;
+    color: var(--white);
+    a{  
+        font-weight: bolder;
+        color:var(--yellow)
+    }
+}
+
+.buttonObjetivo{
+    height: 35px;
+    max-width: 40%;
+    min-width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .2rem;
+    background-color: var(--yellow);
+    margin: 10px 10px;
+    flex-shrink: 0;
+    font-weight: 500;
+    font-style: initial;
+    padding: 0.2rem;
+    transition: all .3s;
+    p{
+        font-weight: bold;
+        color: var(--background);
+        font-style: italic;
+    }
+}
+.buttonObjetivo:hover{
+    transform: scale(1.1);
+    box-shadow: 1px 1px 10px 0px var(--yellow);
+}
+.containerCategories,.containerGoals{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 50px auto;
+   
+    h4{
+        font-size: 1.1rem;
+        font-weight: 500;
+        font-style: oblique;
+        color:var(--darkText);
+        margin: 20px 0 ;
+        
+    }
+    .contentGoals{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        
+    }
+}
+.containerOffers{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    
+    h2{
+        color: var(--white);
+        span{
+            color: var(--yellow);
+        
+        }
+    }
+
+    .contenteP{
+        font-size:.7rem ;
+        font-weight: bold;
+        font-style: italic;
+        color: var(--yellow);
+    }
+    
+}
+
+.produtoDestaqueOfertas{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin:10px auto;
+    overflow-x: auto;
+    justify-content: space-around;
+    
+    
+}
+.containerImage{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .divImage{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1.5rem;
+        position: relative;
+        width: 125px;
+        height: 125px;
+        overflow: visible;
+        border:2px solid var(--yellow);
+        border-radius: 50%;
+        background-color: var(--lightBackground);
+        
+        .image{
+            transform: rotate(5deg);
+            transition: all 1.2s;
+            border-radius: 50%;
+        }
+        h5{
+           color: var(--white);
+           margin-top: 10px;
+           font-weight: 1rem;
+
+        }
+    }
+    .divImage .image:hover{
+        background-color: var(--yellow);
+        transform: rotate(-10deg);
+        border-radius: 50%;
+        transform: scale(1.1);
+    }
+
+}
+.contentTextoProdutos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 40px auto;
+    font-size: larger;
+    
+    h3{
+        color: var(--white);
+        span{
+            color: var(--yellow);
+        }
+    }
+}
+
+.sectionMarca {
+    width: 100%;
+    height: 150px; /* Altura total da seção de marcas */
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto;
+  
+    h4 {
+      margin: 20px 0; /* Espaçamento abaixo do título "Marcas que trabalhamos" */
+    }
+  
+    .contentMarcas {
+        display: flex;
+        align-items: center;
+        height: 200px; 
+        width: 100%;
+        margin: 0 auto;
+  
+      .contentSlider {
+        width: 90%; 
+        height:100px ;
+        
+        
+        .swiperSlideContent {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          height: 70%;
+          padding: 5px; /* Espaçamento interno para separação entre os slides */
+          background-color: var(--yellow);
+          border-radius: .5rem;
+          
+          p{
+            font-size: 1.5rem;
+            font-style: italic;
+            font-weight: bolder;
+          }
+        }
+      }
+    }
+  }
+
+
+@media (max-width:720px) {
+    .callLogin{
+        display: none;
+    }
+    .draco720{
+        display: block;
+       
+    }
+
+    .contentHeaderDash{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin: 10px auto;
+    }   
+    .headerLogo{
+        margin: 0px;
+        
+    }
+    .logoName{
+        margin: 0px;
+    }
+    .logoImg{
+        display: none;
+    }
+   .produtoDestaqueOfertas{
+    max-width: 80%;
+   }
+}
