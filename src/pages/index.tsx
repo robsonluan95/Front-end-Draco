@@ -119,37 +119,49 @@ export default function Home({objetivos,marcas,produtos}:HomeProps) {
             <h4>Compre por seu objetivo:</h4>
 
               <div className={styles.contentGoals}>
-                {objetivos?.map((objetivo)=>{
-                 return(
-                    <Link href='/' className={styles.buttonObjetivo} key={objetivo.id}><p>{objetivo.name}</p></Link>
-                  )
-                })}
+                {objetivos && objetivos.length>0?(
+                  objetivos?.map((objetivo)=>{
+                    return(
+                       <Link href='/' className={styles.buttonObjetivo} key={objetivo.id}><p>{objetivo.name}</p></Link>
+                     )
+                   })
+                ):(
+                  <p>Objetivos não encontrados</p>
+                )}
+                
               </div>
            
           </section>
           {/** Área de Produtos com Ofertas */}
+          <section>
+            {hasProductWithDiscount? (
+              <section className={styles.containerOffers}>
+                <h2>Nossas <span>Ofertas</span></h2>
+                <div className={styles.produtoDestaqueOfertas}>
+                {produtos.slice(0, 5).map((produto, index) => (
+                  Number(produto.desconto) > 0 ? (
+                    <Card 
+                      key={index} 
+                      valor={Number(produto.valor)} 
+                      desconto={Number(produto.desconto)} 
+                      nome={produto.name}
+                      children=''
+                    />
+                  ) : null
+                ))}
+                </div>
+                <Link href='/page' className={styles.buttonLink}><p>Ver mais ...</p></Link>
+              </section>
+            ):(
+              <h2>Calma, daqui a pouco temos novidades e <span>Ofertas</span></h2>
+            )}
+          </section>
+          
+          {/** Area de Principais Categorias */}
+          <section className={styles.containerProdutosPrincipais}>
+            <h4>Principais categorias</h4>
+          </section>
 
-          {hasProductWithDiscount? (
-            <section className={styles.containerOffers}>
-              <h2>Nossas <span>Ofertas</span></h2>
-              <div className={styles.produtoDestaqueOfertas}>
-              {produtos.slice(0, 5).map((produto, index) => (
-                Number(produto.desconto) > 0 ? (
-                  <Card 
-                    key={index} 
-                    valor={Number(produto.valor)} 
-                    desconto={Number(produto.desconto)} 
-                    nome={produto.name}
-                    children=''
-                  />
-                ) : null
-              ))}
-              </div>
-              <Link href='/page' className={styles.contenteP}>Ver mais...</Link>
-            </section>
-          ):(
-            <h2>Calma, daqui a pouco temos novidades e <span>Ofertas</span></h2>
-          )}
         </section>
         <footer>
           teste

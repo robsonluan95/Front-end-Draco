@@ -64,6 +64,34 @@
     transform: scale(1.1);
     box-shadow: 1px 1px 10px 0px var(--yellow);
 }
+
+.buttonLink{
+    height: 30px;
+    max-width: 30%;
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .2rem;
+    background-color: var(--yellow);
+    margin: 10px 10px;
+    flex-shrink: 0;
+    font-style: initial;
+    padding: 0.2rem;
+    transition: all .3s;
+    p{
+        font-size: small;
+        color: var(--background);
+        font-weight: bold;
+    }
+}
+.buttonLink:hover{
+    
+    box-shadow: 1px 1px 10px 0px var(--yellow);
+}
+
+
+
 .containerCategories,.containerGoals{
     display: flex;
     flex-direction: column;
@@ -216,7 +244,18 @@
       }
     }
   }
-
+.containerProdutosPrincipais{
+    width: 60%;
+    margin: 0 auto;
+    h4{
+        font-size: 1.1rem;
+        font-weight: 500;
+        font-style: oblique;
+        color:var(--darkText);
+        margin: 20px 0 ;
+        
+    }
+}
 
 @media (max-width:720px) {
     .callLogin{
