@@ -22,6 +22,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import HeaderDash from "../components/HeaderDash";
+import { CircleCategoria } from "../components/CircleCategoria";
 
 
 type ProdutoProps={
@@ -45,6 +46,10 @@ type ObjetivoProps={
   id:string;
   name:string;
 }
+type CategoriasProps={
+  id:string;
+  name:string;
+}
 
 type MarcaProps={
   id:string;
@@ -54,11 +59,12 @@ type MarcaProps={
 interface HomeProps{
   objetivos:ObjetivoProps[];
   marcas:MarcaProps[]
-  produtos:ProdutoProps[]
+  produtos:ProdutoProps[];
+  categorias:CategoriasProps[];
 }
 
 
-export default function Home({objetivos,marcas,produtos}:HomeProps) {
+export default function Home({objetivos,marcas,produtos,categorias}:HomeProps) {
   
   const hasProductWithDiscount = produtos.some((produto)=>{
     return Number(produto.desconto)
@@ -158,8 +164,19 @@ export default function Home({objetivos,marcas,produtos}:HomeProps) {
           </section>
           
           {/** Area de Principais Categorias */}
-          <section className={styles.containerProdutosPrincipais}>
-            <h4>Principais categorias</h4>
+          <section className={styles.containerCategoriasPrincipais}>
+          <h4>Principais categorias:</h4>
+          <div className={styles.contentCategorias}>
+            {categorias && categorias.length > 0 ? (
+                categorias?.map((categoria)=> (
+                  <div key={categoria.id}><CircleCategoria/></div>
+                )) 
+              ):(
+                <p>Categorias não encontradas</p>
+              )}
+          </div>
+            
+            
           </section>
 
         </section>
@@ -178,16 +195,18 @@ export default function Home({objetivos,marcas,produtos}:HomeProps) {
 
 export const getServerSideProps = (async(ctx)=>{
   const apiClient =  setupAPIClient(ctx)
-  const [objetivosResponse,produtosResponse]= await Promise.all([  
+  const [objetivosResponse,produtosResponse,categoriasResponse]= await Promise.all([  
     apiClient.get('/objetivos'),
     apiClient.get('/listprodutos'),
+    apiClient.get('/categorias')
       
   ])
   
   return {
       props:{
         objetivos:objetivosResponse.data,
-        produtos:produtosResponse.data
+        produtos:produtosResponse.data,
+        categorias:categoriasResponse.data
       }
   }
 })  
