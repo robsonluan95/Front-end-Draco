@@ -6,7 +6,7 @@ export const CircleCategoria = () => {
   return (
     <section className={styles.container}>
         <section className={styles.containerCategorias}>
-          <Image src={whey} alt='Teste' width={100} height={100}/>
+          <Image className={styles.imagemRotate} src={whey} alt='Teste' width={120} height={120}/>
         </section>
     </section>
    

@@ -165,16 +165,19 @@ export default function Home({objetivos,marcas,produtos,categorias}:HomeProps) {
           
           {/** Area de Principais Categorias */}
           <section className={styles.containerCategoriasPrincipais}>
-          <h4>Principais categorias:</h4>
-          <div className={styles.contentCategorias}>
-            {categorias && categorias.length > 0 ? (
-                categorias?.map((categoria)=> (
-                  <div key={categoria.id}><CircleCategoria/></div>
-                )) 
-              ):(
-                <p>Categorias não encontradas</p>
-              )}
-          </div>
+            <h4>Principais categorias:</h4>
+            <div className={styles.contentCategorias}>
+              {categorias && categorias.length > 0 ? (
+                  categorias?.map((categoria)=> (
+                    <div key={categoria.id} className={styles.contentCategoria}> 
+                      <CircleCategoria/>
+                      <p>{categoria.name}</p>
+                    </div>
+                  )) 
+                ):(
+                  <p>Categorias não encontradas</p>
+                )}
+            </div>
             
             
           </section>

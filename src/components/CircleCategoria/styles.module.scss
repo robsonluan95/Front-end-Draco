@@ -1,18 +1,56 @@
-.containerCategorias{
+.containerCategorias {
     width: 100px;
     height: 100px;
-    border: 1px solid;
+    border: 2px solid;
+    border-color: var(--yellow);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 10px;
-}
+    transition:1s all;
+    
+  
+    &:hover {
+        background-color: rgba(#F2B21A, 0.3);
+        transform: scale(1.2);
+        cursor: pointer;
+      
+    }
+  
+    &:hover .imagemRotate {
+      
+      animation: rotateOscillate 1s infinite ease-in-out;
+      
+    }
+  }
+  
+  .imagemRotate {
+    transition: transform 1s ease-in-out;
+  }
 
-.container{
+  
+  .container {
     display: flex;
-    background-color: aliceblue;
     width: 100%;
     margin: 0 auto;
-   
-}
+  }
+  
+  @keyframes rotateOscillate {
+    0% {
+      transform: rotate(10deg);
+    }
+    20% {
+      transform: rotate(-0deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    80% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(10deg);
+    }
+  }
+  
