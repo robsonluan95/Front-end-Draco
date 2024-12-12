@@ -20,23 +20,39 @@ export default function Categoria({cliente}) {
 
 
     async function loadMarcas(){
-        const apiClient= setupAPIClient()
-        const response = await apiClient.get('/marcas')
-        setMarcas(response.data)
+        try {
+            const apiClient= setupAPIClient()
+            const response = await apiClient.get('/marcas')
+            setMarcas(response.data)  
+        } catch (error) {
+            toast.error("Error ao carregar as categorias")
+            console.error(error.response)
+            
+        }
+        
     }
 
     async function handleRegister(event:FormEvent){
         event.preventDefault()
         if (name===''){
+            toast.warn('Por favor, cadastre um nome a marca')
             return
         }
         const apiClient = setupAPIClient()
-        await apiClient.post('/marca',{
-            name:name
-        })
-        loadMarcas(); 
-        toast.success('Cadastro realizado com sucesso')
-        setName('')
+
+        try {
+            await apiClient.post('/marca',{
+                name:name
+            })
+            loadMarcas();
+            toast.success('Cadastro realizado com sucesso')
+            setName('')
+        } catch (error) {
+            toast.error(error.response.data.error)
+            console.log(error.response.data.error)
+        }
+       
+        
     }
 
     async function handleDelete(id:string) {

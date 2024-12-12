@@ -247,7 +247,7 @@
 .containerCategoriasPrincipais{
     display: flex;
     flex-direction: column;
-    width: 60%;
+    max-width: 80%;
     margin: 0 auto;
     h4{
         font-size: 1.1rem;
@@ -260,14 +260,18 @@
     .contentCategorias{
 
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        margin: 0 auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
         .contentCategoria{
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            p{
+                color: var(--darkText);
+                font-weight: 400;
+            }
         }
     }
 }

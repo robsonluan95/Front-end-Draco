@@ -20,14 +20,21 @@ export default function Categoria({cliente}) {
 
 
     async function loadObjetivo(){
-        const apiClient= setupAPIClient()
-        const response = await apiClient.get('/objetivos')
-        setObjetivo(response.data)
+        try {
+            const apiClient= setupAPIClient()
+            const response = await apiClient.get('/objetivos')
+            setObjetivo(response.data)
+        } catch (error) {
+            toast.error("Error ao carregar os objetivos")
+            console.error(error.response)
+        }
+        
     }
 
     async function handleRegister(event:FormEvent){
         event.preventDefault()
         if (name===''){
+            toast.warn("Digite um nome ao objetivo")
             return
         }
         const apiClient = setupAPIClient()
@@ -39,7 +46,8 @@ export default function Categoria({cliente}) {
             toast.success('Cadastro realizado com sucesso')
             setName('')
         }catch(error){
-            toast.error('Erro ao cadastrar objetivo')
+            toast.error(error.response.data.error)
+            console.log(error.response.data.error)
         }
         
         

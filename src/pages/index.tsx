@@ -65,6 +65,8 @@ interface HomeProps{
 
 
 export default function Home({objetivos,marcas,produtos,categorias}:HomeProps) {
+
+  const [maxItens,setMaxItens]= useState(5)
   
   const hasProductWithDiscount = produtos.some((produto)=>{
     return Number(produto.desconto)
@@ -76,7 +78,17 @@ export default function Home({objetivos,marcas,produtos,categorias}:HomeProps) {
   const [hidden,setHidden]=useState(false)
 
   
-  
+  useEffect(()=>{
+    const handleResize = () =>{
+      setMaxItens(window.innerWidth<= 900 ?3:5)
+    }
+
+    handleResize();
+
+    window.addEventListener('resize',handleResize)
+
+    return ()=> window.removeEventListener('resize',handleResize)
+  })
   useEffect(()=>{
     const interval = setInterval(()=>{
       const newNum =(Math.floor(Math.random()* chamadas.length))
@@ -167,8 +179,9 @@ export default function Home({objetivos,marcas,produtos,categorias}:HomeProps) {
           <section className={styles.containerCategoriasPrincipais}>
             <h4>Principais categorias:</h4>
             <div className={styles.contentCategorias}>
-              {categorias && categorias.length > 0 ? (
-                  categorias?.map((categoria)=> (
+              {categorias && categorias.length > 0 ? ( 
+                  
+                  categorias.slice(0,maxItens).map((categoria)=> (
                     <div key={categoria.id} className={styles.contentCategoria}> 
                       <CircleCategoria/>
                       <p>{categoria.name}</p>

@@ -44,11 +44,16 @@ export default function Categoria({cliente}) {
 
 
     async function loadPedidos(){
-        const apiClient= setupAPIClient()
-        const response = await apiClient.get('/pedidos')
-       
-        setPedidos(response.data)
-        console.log(response.data)
+        try {
+            const apiClient= setupAPIClient()
+            const response = await apiClient.get('/pedidos')
+            setPedidos(response.data)
+        } catch (error) {
+            toast.error("Error ao carregar aos pedidos!")
+            console.error(error.response.data)
+        }
+        
+        
     }
 
     async function handleShowUser(id:string) {

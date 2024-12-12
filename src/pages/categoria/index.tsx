@@ -14,26 +14,37 @@ export default function Categoria() {
 
     async function loadCategorias(){
         const apiClient= setupAPIClient()
-        const response = await apiClient.get('/categorias')
-        setCategorias(response.data)
+        try{
+            const response = await apiClient.get('/categorias')
+            setCategorias(response.data)
+        }catch(error){
+            toast.error("Error ao carregar as categorias")
+            console.error("Error ao carregar as categorias: " , error)
+        }
+        
     }
 
     async function handleRegister(event:FormEvent){
         event.preventDefault()
         if (name===''){
-            return
+            toast.warn("Por favor,insira um nome para a categoria.")
+            return; 
         }
         const apiClient = setupAPIClient()
-        await apiClient.post('/categoria',{
-            name:name
-        })
-        loadCategorias(); 
-        toast.success('Cadastro realizado com sucesso')
-        setName('')
+        try {
+            await apiClient.post('/categoria',{
+                name:name
+            })
+            loadCategorias(); 
+            toast.success('Cadastro realizado com sucesso')
+            setName('')
+        } catch (error) {
+            toast.error(error.response.data.error)
+            console.log('Erro ao cadastrar categoria:',error.response.data.error)
+        }
     }
 
     useEffect(()=>{
-
         loadCategorias()
     },[])
   return (
