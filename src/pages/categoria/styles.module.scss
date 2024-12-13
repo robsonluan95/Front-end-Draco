@@ -50,3 +50,48 @@
     letter-spacing: 0.1rem;
     font-size: .9rem;
 }
+.box{
+    display: flex;
+    justify-content: space-between;
+}
+.left{
+    transition: all 1s;
+}
+.left:hover{
+    transform: scale(1.5);
+    animation: rotateAnimation 2s linear infinite;
+    cursor: pointer;
+}
+.rotate{
+    display: flex;
+    align-items: center;
+    transition: all 1s;
+    margin-right: .5rem;
+}
+.rotate:hover{
+    cursor: pointer;
+    animation:ButtonRotateAnimation 2s linear infinite;
+}
+@keyframes rotateAnimation{
+    0%, 100% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(30deg);
+      }
+      75% {
+        transform: rotate(-30deg);
+      }
+}
+
+@keyframes ButtonRotateAnimation{
+    0%, 100% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(50deg);
+      }
+      75% {
+        transform: rotate(-50deg);
+      }
+}

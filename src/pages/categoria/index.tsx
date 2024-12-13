@@ -7,6 +7,7 @@ import { setupAPIClient } from '@/src/services/api'
 import { toast } from 'react-toastify'
 import { FiTrash2 } from 'react-icons/fi'
 import { FiUpload } from 'react-icons/fi'
+import {BsArrowRepeat} from 'react-icons/bs'
 
 export default function Categoria() {
     const [name,setName]=useState('')
@@ -23,14 +24,32 @@ export default function Categoria() {
         }
         
     }
+    async function handleUpdate(){
+        toast.success('Categorias atualizados com sucesso')
+        loadCategorias()
 
+    }
+    async function handleDelete(id:string){
+        const apiClient = setupAPIClient()
+        try{
+            const response = await apiClient.delete(`categoriasdelete?categoria_id=${id}`)
+            toast.success('Sucesso ao deletar categoria!')
+            loadCategorias()
+        }catch(error){
+            toast.error("Erro ao deletar categoria! ")
+            console.log(error)
+           
+        }
+    }
     async function handleRegister(event:FormEvent){
         event.preventDefault()
         if (name===''){
             toast.warn("Por favor,insira um nome para a categoria.")
             return; 
         }
+        
         const apiClient = setupAPIClient()
+
         try {
             await apiClient.post('/categoria',{
                 name:name
@@ -72,13 +91,17 @@ export default function Categoria() {
                 </form>
             </div>
             <div className={styles.container}>
-                <h2>Categorias</h2>
+                <div className={styles.box}>
+                    <h2>Categorias</h2>
+                    <div onClick={handleUpdate} className={styles.rotate}> <BsArrowRepeat size={20} color='#F2B21A' /></div>  
+                </div>
+                
                 {categorias?.map((categoria)=>{
                     return (
                         <div className={styles.content} key={categoria.id}>
                             
                             <span>{categoria.name}</span>
-                            <div className={styles.left}><FiTrash2 color='#ff3f4b'/></div>
+                            <div  className={styles.left} onClick={()=>handleDelete(categoria.id)}><FiTrash2 size={20} color='#ff3f4b'/></div>
                         </div>
                     )
                 })}
