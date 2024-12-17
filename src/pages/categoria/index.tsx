@@ -106,6 +106,10 @@ export default function Categoria() {
                     )
                 })}
             </div>
+
+            <div>
+                <h4>As marcas que trabalhamos:</h4>
+            </div>
             
         </main>    
     </>

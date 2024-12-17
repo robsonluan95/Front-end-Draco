@@ -46,6 +46,10 @@ type ObjetivoProps={
   id:string;
   name:string;
 }
+type MarcasProps={
+  id:string;
+  name:string;
+}
 type CategoriasProps={
   id:string;
   name:string;
@@ -195,6 +199,25 @@ export default function Home({objetivos,marcas,produtos,categorias}:HomeProps) {
             
           </section>
 
+          {/** Area das marcas que trabalhamos    */}
+            <section className={styles.containerMarcas} >
+              <div>
+                <h4>As marcas que trabalhamos:</h4>
+              </div>
+              <div>
+                {marcas && marcas.length > 0 ? (
+                  marcas.slice(0,maxItens).map((marca) => (
+                    <div key={marca.id} className={styles.contentMarca}>
+                      teste
+                      </div>
+                  ))
+                ) : (<p> Nenhuma marca encontrada </p>) }
+              </div>
+
+              
+            </section>
+            
+
         </section>
         <footer>
           teste
@@ -211,10 +234,12 @@ export default function Home({objetivos,marcas,produtos,categorias}:HomeProps) {
 
 export const getServerSideProps = (async(ctx)=>{
   const apiClient =  setupAPIClient(ctx)
-  const [objetivosResponse,produtosResponse,categoriasResponse]= await Promise.all([  
+  const [objetivosResponse,produtosResponse,categoriasResponse,marcasResponse]= await Promise.all([  
     apiClient.get('/objetivos'),
     apiClient.get('/listprodutos'),
-    apiClient.get('/categorias')
+    apiClient.get('/categorias'),
+    apiClient.get('/marcas')
+
       
   ])
   
@@ -222,7 +247,8 @@ export const getServerSideProps = (async(ctx)=>{
       props:{
         objetivos:objetivosResponse.data,
         produtos:produtosResponse.data,
-        categorias:categoriasResponse.data
+        categorias:categoriasResponse.data,
+        marcas:marcasResponse.data
       }
   }
 })  
