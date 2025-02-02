@@ -275,6 +275,31 @@
         }
     }
 }
+.containerMarcas{
+    background-color: var(--darkText);
+    max-width: 60%;
+    margin: 0 auto;
+    overflow: hidden;
+
+}
+.contentMarcas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    overflow-x: auto;
+}
+.contentMarca {
+    min-width: 120px;
+    height: 100px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 8px;
+    flex-shrink: 0; /* Evita que os itens sejam comprimidos */
+  }
 
 @media (max-width:720px) {
     .callLogin{

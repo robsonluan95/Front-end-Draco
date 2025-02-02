@@ -118,12 +118,17 @@ export default function Categoria({cliente,categorias,marcas,objetivos}:Categori
         
         try{
             const data = new FormData()
+
             if (nomeProduto===''||valor===''||categoriaSelecionada===null||marcaSelecionada===null){
                 toast.error('Preencha os campos, nome e valor!')
                 return
             }
+
             data.append('file',imageAvatarProdutoURL)
-            data.append('fileTabela',imageAvatarMarcaURL)
+            if(imageAvatarMarcaURL){
+                data.append('fileTabela',imageAvatarMarcaURL)
+            }
+            
             data.append('name', nomeProduto)
             data.append('valor', valor)
             data.append('desconto',desconto)
@@ -137,12 +142,13 @@ export default function Categoria({cliente,categorias,marcas,objetivos}:Categori
 
             const apiClient = setupAPIClient()
             await apiClient.post('/produto',data)
+            loadMarcas(); 
             toast.success('Cadastro realizado com sucesso')
         }catch(error){
             console.log(error)
         }
 
-        loadMarcas();  
+         
     }
 
     useEffect(()=>{

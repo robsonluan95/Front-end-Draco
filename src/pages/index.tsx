@@ -204,11 +204,11 @@ export default function Home({objetivos,marcas,produtos,categorias}:HomeProps) {
               <div>
                 <h4>As marcas que trabalhamos:</h4>
               </div>
-              <div>
+              <div className={styles.contentMarcas}>
                 {marcas && marcas.length > 0 ? (
                   marcas.slice(0,maxItens).map((marca) => (
                     <div key={marca.id} className={styles.contentMarca}>
-                      teste
+                      {marca.name}
                       </div>
                   ))
                 ) : (<p> Nenhuma marca encontrada </p>) }
