@@ -40,6 +40,7 @@ type CategoriaProps = {
 
 
 export default function Categoria({cliente,categorias,marcas,objetivos}:CategoriaProps) {
+    const apiClient= setupAPIClient()
     //State da imagem do Produto!
     const [avatarProdutoURL,setAvatarProdutoURL]=useState("")
     const [imageAvatarProdutoURL,setImageAvatarProdutoURL]=useState(null)
@@ -78,7 +79,7 @@ export default function Categoria({cliente,categorias,marcas,objetivos}:Categori
         if(!event.target.files){
             return
         }
-        const image = event.target.files[0]
+        const image = event.target.files[0] 
 
         if(!image){
             return
@@ -108,7 +109,6 @@ export default function Categoria({cliente,categorias,marcas,objetivos}:Categori
     }
 
     async function loadMarcas(){
-        const apiClient= setupAPIClient()
         const response = await apiClient.get('/listprodutos')
         setListProdutos(response.data)
     }
@@ -140,7 +140,6 @@ export default function Categoria({cliente,categorias,marcas,objetivos}:Categori
             data.append('categoria_id',categorias[categoriaSelecionada].id)
             data.append('objetivo_id',objetivos[objetivoSelecionada].id)
 
-            const apiClient = setupAPIClient()
             await apiClient.post('/produto',data)
             loadMarcas(); 
             toast.success('Cadastro realizado com sucesso')
